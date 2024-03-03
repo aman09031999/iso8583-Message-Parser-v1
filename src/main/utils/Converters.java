@@ -13,13 +13,13 @@ public class Converters {
           int mask = 1 << k;
           bin.append((((int) ascii.charAt(i)) & mask) != 0 ? 1:0);
         }
-        
+      }
+/*       
         if(i == (ascii.length()-1))
         	break;
         else
         	bin.append(" ");
-      }
-      
+*/
       return bin.toString();
     }
 	
@@ -28,7 +28,6 @@ public class Converters {
 		StringBuilder hex = new StringBuilder();
 	     
 	    for(int i=0; i< ascii.length();i++)
-	    {
 	    	hex.append(Integer.toHexString((int) ascii.charAt(i)));
 /*	    	
 	    	if(i == (ascii.length()-1))
@@ -36,15 +35,11 @@ public class Converters {
 	        else
 	        	hex.append(" ");
 */
-	    }
-	    
-	     
 	    return hex.toString();
 	}
-	
+
 	public static String hexToAscii(String hexValue)
 	{
-		// TODO Auto-generated method stub
 		if(hexValue.length() % 2 != 0)
 			hexValue = "0" + hexValue;
 		
@@ -59,4 +54,5 @@ public class Converters {
 		
 		return builder.toString();
 	}
+
 }

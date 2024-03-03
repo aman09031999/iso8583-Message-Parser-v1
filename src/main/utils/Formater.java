@@ -1,10 +1,10 @@
 package main.utils;
 
-public class Formater {
+public class Formater extends Converters{
 
 	public static double decodeTransAmt(String txAmt)
 	{
-	    StringBuffer amt = new StringBuffer(txAmt).delete(0, 1);
+	    StringBuilder amt = new StringBuilder(hexToAscii(txAmt)).delete(0, 1);
 
 	    return Double.parseDouble(amt.toString())/100; 
 	}
@@ -14,8 +14,9 @@ public class Formater {
 										int length)			//	length of Data Element
 	{
 		int val = (int) (txAmt * 100);
-	    int count = (int) Math.floor(Math.log10(val) + 1);
-	     
+
+		int count = (int) Math.floor(Math.log10(val) + 1);
+	    
 	    StringBuilder str = new StringBuilder();
 	     
 	    if(indicator == 1)
@@ -27,6 +28,7 @@ public class Formater {
 	      for(int i=0; i<length-count;i++)
 	        str.append('0');
 	    
-	    return str.append(val).toString(); 
+	    String ascii = str.append(val).toString();
+	    return asciiToHex(ascii); 
     }
 }
